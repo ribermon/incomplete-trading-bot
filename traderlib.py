@@ -418,11 +418,11 @@ class Trader:
             rsi = ti.rsi(stock.df.close.values, 14) # it uses 14 periods
             rsi = rsi[-1]
 
-            if (stock.direction == 'buy') and ((rsi>50) and (rsi<80)):
+            if (stock.direction == 'buy') and ((rsi>50) and (rsi<gvars.RSI_Overbuy)):
                 self._L.info('OK: RSI is %.2f' % rsi)
                 return True,rsi
 
-            elif (stock.direction == 'sell') and ((rsi<50) and (rsi>20)):
+            elif (stock.direction == 'sell') and ((rsi<50) and (rsi>gvars.RSI_Oversell)):
                 self._L.info('OK: RSI is %.2f' % rsi)
                 return True,rsi
 
